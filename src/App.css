@@ -1,3 +1,16 @@
-.App {
-  text-align: center;
+.page-main {
+  min-height: 70vh;
+}
+
+.form {
+  border: 1px solid rgba(129, 128, 128, 0.227);
+  padding: 1.5rem;
+  margin-top: 3rem;
+  border-radius: 10px;
+
+  box-shadow: -5px 5px 10px rgba(106, 106, 106, 0.642);
+
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
 }
