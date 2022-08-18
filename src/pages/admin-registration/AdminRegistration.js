@@ -1,10 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Form, Button } from 'react-bootstrap';
 import { CustomInputField } from '../../components/customInputField/CustomInputField';
 import { Footer } from '../../components/footer/Footer';
 import { Header } from '../../components/header/Header';
 
 const AdminRegistration = () => {
+
+  const [formData, setFormData] = useState({});
+
+  const handleOnChange = e => {
+    const { name, value } = e.target;
+    setFormData(
+      {
+        ...formData,
+        [name]: value,
+      })
+  };
+
+  const handleOnSubmit = e => {
+    e.preventDefault();
+    console.log(formData);
+  }
+
   const fields = [
     {
       label: "First Name",
@@ -21,10 +38,24 @@ const AdminRegistration = () => {
       required: true,
     },
     {
-      label: "Password",
-      name: 'password',
-      type: 'password',
-      placeholder: "*******",
+      label: "Phone",
+      name: 'phone',
+      type: 'number',
+      placeholder: "1234567",
+      required: false,
+    },
+    {
+      label: "Address",
+      name: 'address',
+      type: 'text',
+      placeholder: "adress here..",
+      required: false,
+    },
+    {
+      label: "Date of Birth",
+      name: 'dob',
+      type: 'date',
+      placeholder: "DD/MM/YYYY",
       required: true,
     },
     {
@@ -34,18 +65,34 @@ const AdminRegistration = () => {
       placeholder: "abc@gdef.com",
       required: true,
     },
+    {
+      label: "Password",
+      name: 'password',
+      type: 'password',
+      placeholder: "*******",
+      required: true,
+    },
+    {
+      label: "Confirm Password",
+      name: 'confirmPassword',
+      type: 'password',
+      placeholder: "*******",
+      required: true,
+    },
+
   ]
   return (
     <div>
       <Header />
       <Container className="page-main">
         <div className='form'>
-          <Form>
+          <Form onSubmit={handleOnSubmit}>
             <h1>New Admin Registration</h1>
-
-            <CustomInputField label="Name" type="text" placeholder="Enter your name here" />
-            <CustomInputField label="Password" type="password" placeholder="******" />
-            <CustomInputField label="email" type="email" placeholder="Enter your email here" />
+            {
+              fields.map((item, i) =>
+                <CustomInputField key={i} {...item} onChange={handleOnChange} />
+              )
+            }
 
             <Button variant="primary" type="submit">
               Submit
