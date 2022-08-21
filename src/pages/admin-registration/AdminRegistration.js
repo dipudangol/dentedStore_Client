@@ -31,7 +31,6 @@ const AdminRegistration = () => {
     }
 
     setResponse(result);
-    console.log(formData);
   }
 
   const fields = [

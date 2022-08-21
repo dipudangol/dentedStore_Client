@@ -31,7 +31,6 @@ const EmailVerification = () => {
         }
         )()
     }, [queryParams])
-    console.log(response)
     return (
         <div>
             <Header />
