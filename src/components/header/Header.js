@@ -6,6 +6,7 @@ export const Header = () => {
   return (
     <Navbar bg="success" variant="dark" expand="md">
       <Container>
+      <i variant="dark" class="fa-solid fa-bars"></i> 
         <Navbar.Brand href="/">Dented Store</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
