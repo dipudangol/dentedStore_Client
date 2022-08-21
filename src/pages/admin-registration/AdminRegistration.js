@@ -9,7 +9,7 @@ const AdminRegistration = () => {
 
   const [formData, setFormData] = useState({});
   const [response, setResponse] = useState({
-    status: "error",
+    status: "success",
     message: "test",
   });
 
