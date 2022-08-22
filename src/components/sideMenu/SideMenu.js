@@ -1,28 +1,64 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { ListGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
+import { setShowSideMenu } from '../../pages/system-state/systemSlice';
 
 const SideMenu = () => {
-    const [show, setShow] = useState(false);
+    const dispatch = useDispatch();
+    const { showSideMenu } = useSelector((state) => state.system);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => dispatch(setShowSideMenu(false));;
+    const handleShow = () => dispatch(setShowSideMenu(true));
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Launch
-            </Button>
-
-            <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas show={showSideMenu} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                    <Offcanvas.Title>Dented Store admin</Offcanvas.Title>
                 </Offcanvas.Header>
+                <hr />
                 <Offcanvas.Body>
-                    Some text as placeholder. In real life you can have the elements you
-                    have chosen. Like, text, images, lists, etc.
-                </Offcanvas.Body>
-            </Offcanvas>
+                    <ListGroup variant="flush" className="fs-5">
+                        <ListGroup.Item>
+                            <Link to="/dashboard" onClick={handleClose} className=" nav-link" >
+                                <i className="fa-solid fa-gauge"></i> Dashboard
+                            </Link>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <Link to="" onClick={handleClose} className="nav-link">
+                                <i className="fa-solid fa-list"></i> Categories
+                            </Link>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <Link to="/products" onClick={handleClose} className="nav-link">
+                                <i className="fa-brands fa-product-hunt"></i> Products
+                            </Link >
+                        </ListGroup.Item >
+                        <ListGroup.Item>
+                            <Link to="" onClick={handleClose} className="nav-link"> <i className=" fa-solid fa-money-check"></i> Payment Methods</Link>
+                        </ListGroup.Item >
+                        <ListGroup.Item>
+                            <Link to="" onClick={handleClose} className="nav-link"><i className=" fa-solid fa-people-group"></i>  Customers </Link>
+                        </ListGroup.Item >
+                        <ListGroup.Item>
+                            <Link to="" onClick={handleClose} className="nav-link"> <i className=" fa-solid fa-cart-arrow-down"></i> Orders </Link >
+                        </ListGroup.Item >
+                        <ListGroup.Item>
+                            <Link to="" onClick={handleClose} className="nav-link">
+                                <i className="fa-solid fa-star"></i> Reviews
+                            </Link >
+                        </ListGroup.Item >
+                        <ListGroup.Item>
+                            <Link to="" onClick={handleClose} className="nav-link">
+                                <i className="fa-solid fa-gear"></i> Settings
+                            </Link >
+                        </ListGroup.Item >
+                    </ListGroup >
+                </Offcanvas.Body >
+            </Offcanvas >
         </>
     );
 }
