@@ -1,6 +1,5 @@
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';

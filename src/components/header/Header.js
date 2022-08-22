@@ -1,14 +1,21 @@
 import React from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { logoutAdminAction } from '../../pages/login/userAction'
 import { setShowSideMenu } from '../../pages/system-state/systemSlice'
 
 export const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleShow = () => dispatch(setShowSideMenu(true));
 
-  const { user } = useSelector((state) => state.admin)
+  const handleOnlogout = () => {
+    dispatch(logoutAdminAction());
+    navigate("/");
+  }
+
+  const { user } = useSelector((state) => state.admin);
 
   return (
     <Navbar bg="success" variant="dark" expand="md">
@@ -22,14 +29,13 @@ export const Header = () => {
           <Nav className="me-auto">
 
             {user._id ? (
-              <Link className="nav-link" to="/">Logout</Link>
+              <Link className="nav-link" to="/" onClick={handleOnlogout}>Logout</Link>
 
             ) : (<>
               <Link className="nav-link" to="/">Login</Link>
               <Link className="nav-link" to="/Register">Register</Link>
             </>
             )}
-
           </Nav>
         </Navbar.Collapse>
       </Container>

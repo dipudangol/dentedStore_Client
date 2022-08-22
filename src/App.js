@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from './pages/dashboard/Dashboard';
 import Products from './pages/products/Products';
+import { PrivateRouter } from './components/private-router/privateRouter';
 
 function App() {
   return (
@@ -19,8 +20,17 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* private routes */}
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/dashboard"
+            element={
+              <PrivateRouter>
+                <Dashboard />
+              </PrivateRouter>
+            }
+          />
+          <Route path="/products" element={
+            <PrivateRouter>
+              <Products />
+            </PrivateRouter>} />
 
 
 

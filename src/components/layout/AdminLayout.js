@@ -9,10 +9,10 @@ const AdminLayout = ({ children }) => {
             {/* header */}
             <Header />
 
-        {/* sideMenu */}
-        <SideMenu/> 
-            <main style={{ minHeight: "70vh" }}>{children}</main >
-            
+            {/* sideMenu */}
+            <SideMenu />
+            <main style={{ minHeight: "70vh" }} className="container">{children}</main >
+
             {/* footer */}
             <Footer />
         </div>

@@ -5,17 +5,19 @@ import { Footer } from '../../components/footer/Footer';
 import { Header } from '../../components/header/Header';
 import { loginUserAction } from './userAction';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const LoginPage = () => {
-    const navigate = useNavigate();
     const [loginData, setLoginData] = useState({});
+    const navigate = useNavigate();
+    const location=useLocation();
 
     const { user } = useSelector(state => state.admin);
+    const origin=(location.state && location.state.from && location.state.from.pathname)|| "/dashboard";
 
     useEffect(() => {
-        user._id && navigate("/dashboard");
+        user._id && navigate(origin);
     }, [user, navigate]);
 
     const dispatch = useDispatch();
