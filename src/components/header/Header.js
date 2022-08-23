@@ -22,8 +22,8 @@ export const Header = () => {
       <Container>
         {user._id && (
           <i className="fa-regular fa-bars" onClick={handleShow}></i>
-        )}{""}
-        <Navbar.Brand href="/">  Dented Store</Navbar.Brand>
+        )}
+        <Navbar.Brand href="#">  Dented Store</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

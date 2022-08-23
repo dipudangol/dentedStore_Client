@@ -1,6 +1,7 @@
 import axios from "axios";
 const rootUrl = process.env.REACT_APP_API_ENDPOINT;
 const adminUserEP = rootUrl + "/admin-user";
+const categoryEP = rootUrl + "/category";
 
 
 
@@ -37,7 +38,7 @@ export const postUser = (data) => {
 export const emailVerifyAdminUser = (data) => {
     const option = {
         method: "patch",
-        url: adminUserEP +"/verify-email",
+        url: adminUserEP + "/verify-email",
         data,
     }
     return apiProcessor(option);
@@ -47,8 +48,19 @@ export const emailVerifyAdminUser = (data) => {
 export const loginAdminUser = (data) => {
     const option = {
         method: "post",
-        url: adminUserEP +"/login",
+        url: adminUserEP + "/login",
         data,
+    }
+    return apiProcessor(option);
+}
+
+
+//====================================categories===============
+
+export const fetchCategory = (_id) => {
+    const option = {
+        method: "get",
+        url: _id ? categoryEP + "/" + _id : categoryEP
     }
     return apiProcessor(option);
 }

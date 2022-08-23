@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from './pages/dashboard/Dashboard';
 import Products from './pages/products/Products';
 import { PrivateRouter } from './components/private-router/privateRouter';
+import Category from './pages/categories/Category';
 
 function App() {
   return (
@@ -30,6 +31,11 @@ function App() {
           <Route path="/products" element={
             <PrivateRouter>
               <Products />
+            </PrivateRouter>} />
+
+          <Route path="/category" element={
+            <PrivateRouter>
+              <Category />
             </PrivateRouter>} />
 
 
