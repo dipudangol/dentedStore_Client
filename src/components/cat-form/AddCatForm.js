@@ -16,6 +16,9 @@ const AddCatForm = () => {
                     <Form.Group>
                         <Form.Select name="parentId">
                             <option value="">Select Parent Category</option>
+                            <option value="">Laptops</option>
+                            <option value="">Electronics</option>
+                            <option value="">Home and Decor</option>
                         </Form.Select>
                     </Form.Group>
                 </Col>
