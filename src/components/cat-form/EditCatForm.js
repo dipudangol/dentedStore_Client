@@ -1,0 +1,51 @@
+import React from 'react'
+import { Button, Col, Form, Row } from 'react-bootstrap'
+import { CustomModal } from '../model/Model'
+
+const EditCatForm = () => {
+
+    const initialState = {
+        status: "in active",
+        name: "",
+        parentId: null
+    };
+    return (
+        <CustomModal title="Edit Category">
+            <Form className="py-5 mb-4">
+
+                <Row className='g-2'>
+                    <Col md='2'>
+                        <Form.Group>
+                            <Form.Check name="status" label="status" type="switch"></Form.Check>
+                        </Form.Group>
+                    </Col>
+                    <Col md='4'>
+                        <Form.Group>
+                            <Form.Select name="parentId">
+                                <option value="">Select Parent Category</option>
+                                <option value="">Laptops</option>
+                                <option value="">Electronics</option>
+                                <option value="">Home and Decor</option>
+                            </Form.Select>
+                        </Form.Group>
+                    </Col>
+                    <Col md='4'>
+                        <Form.Group>
+                            <Form.Control type="text" name="name" placeholder="enter category name"></Form.Control>
+                        </Form.Group>
+                    </Col>
+                    <Col md='2'>
+                        <Form.Group>
+                            <Button variant="primary" type="submit">Add Category</Button>
+                        </Form.Group>
+                    </Col>
+                </Row>
+            </Form>
+
+        </CustomModal>
+
+    )
+}
+
+
+export default EditCatForm;

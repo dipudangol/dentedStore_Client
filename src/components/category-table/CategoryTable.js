@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Row, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategoryAction } from '../../pages/categories/categoryAction';
+import EditCatForm from '../cat-form/EditCatForm';
 
 export const CategoryTable = () => {
 
@@ -22,6 +23,7 @@ export const CategoryTable = () => {
 
     return (
         <Row>
+            <EditCatForm />
             <Table striped hover bordered>
                 <thead>
                     <tr>

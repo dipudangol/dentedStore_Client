@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     showSideMenu: false,
-    modelShow: true,
+    modalShow: true,
 };
 
 const systemSlice = createSlice({
@@ -12,7 +12,7 @@ const systemSlice = createSlice({
             state.showSideMenu = payload;
         },
         setModalShow: (state) => {
-            state.modelShow = !state.modelShow;
+            state.modalShow = !state.modalShow;
         },
     },
 })
