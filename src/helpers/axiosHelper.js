@@ -64,3 +64,37 @@ export const fetchCategory = (_id) => {
     }
     return apiProcessor(option);
 }
+
+
+// Post categories
+export const postCategory = (data) => {
+    const option = {
+        method: "post",
+        url: categoryEP,
+        data
+    }
+    return apiProcessor(option);
+}
+
+
+// update categories
+export const updateCategory = (data) => {
+    const option = {
+        method: "put",
+        url: categoryEP,
+        data,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
+
+//delete categories
+export const deleteCategory = (_id) => {
+    const option = {
+        method: "delete",
+        url: categoryEP + '/' + _id,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}

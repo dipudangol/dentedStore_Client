@@ -19,7 +19,7 @@ export const CustomModal = ({ title, children }) => {
                     {title}
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className='py-5 mb-4'>
                 {children}
             </Modal.Body>
             <Modal.Footer>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
+import { postCategoryAction } from '../../pages/categories/categoryAction';
 
 const AddCatForm = () => {
 
@@ -32,11 +33,12 @@ const AddCatForm = () => {
     const handleOnsubmit = (e) => {
         e.preventDefault();
         console.log(form);
+        dispatch(postCategoryAction(form));
     };
 
 
     return (
-        <Form onSubmit={handleOnsubmit} className="py-5 mb-4">
+        <Form onSubmit={handleOnsubmit} className="py-5 mb-4 shadow-lg rounded">
             <h4 className="mb-3">Add New Categories</h4>
             <Row className='g-2'>
                 <Col md='2'>
@@ -49,14 +51,14 @@ const AddCatForm = () => {
                         <Form.Select name="parentId" onChange={handleOnchange}>
                             <option value="">Select Parent Category</option>
                             {
-                                categories.length > 0 && categories.map((item) => !item.parentId && <option value={item._id }>{item.name}</option>)
+                                categories.length > 0 && categories.map((item) => !item.parentId && <option value={item._id}>{item.name}</option>)
                             }
                         </Form.Select>
                     </Form.Group>
                 </Col>
                 <Col md='4'>
                     <Form.Group>
-                        <Form.Control type="text" name="name" placeholder="enter category name" onChange={handleOnchange}></Form.Control>
+                        <Form.Control type="text" name="name" placeholder="enter category name" onChange={handleOnchange} required></Form.Control>
                     </Form.Group>
                 </Col>
                 <Col md='2'>
