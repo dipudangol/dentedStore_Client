@@ -3,7 +3,7 @@ import { Button, Container, Form } from 'react-bootstrap';
 import { CustomInputField } from '../../components/customInputField/CustomInputField';
 import { Footer } from '../../components/footer/Footer';
 import { Header } from '../../components/header/Header';
-import { loginUserAction } from './userAction';
+import { autoLoginAction, loginUserAction } from './userAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -11,16 +11,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 const LoginPage = () => {
     const [loginData, setLoginData] = useState({});
     const navigate = useNavigate();
-    const location=useLocation();
+    const location = useLocation();
+    const dispatch = useDispatch();
 
     const { user } = useSelector(state => state.admin);
-    const origin=(location.state && location.state.from && location.state.from.pathname)|| "/dashboard";
+    const origin = (location.state && location.state.from && location.state.from.pathname) || "/dashboard";
 
     useEffect(() => {
-        user._id && navigate(origin);
-    }, [user, navigate]);
+        user._id ? navigate(origin) : dispatch(autoLoginAction());
+    }, [user, navigate, dispatch]);
 
-    const dispatch = useDispatch();
     const fields = [
 
         {

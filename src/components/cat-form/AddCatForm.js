@@ -41,7 +41,7 @@ const AddCatForm = () => {
         <Form onSubmit={handleOnsubmit} className="py-5 mb-4 shadow-lg rounded">
             <h4 className="mb-3">Add New Categories</h4>
             <Row className='g-2'>
-                <Col md='2'>
+                <Col md='2 py-10'>
                     <Form.Group>
                         <Form.Check name="status" label="status" type="switch" onChange={handleOnchange}></Form.Check>
                     </Form.Group>
