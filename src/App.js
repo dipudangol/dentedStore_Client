@@ -11,8 +11,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from './pages/dashboard/Dashboard';
 import Products from './pages/products/Products';
-import { PrivateRouter } from './components/private-router/privateRouter';
+import PaymentMethod from './pages/payment-method/PaymentMethod';
 import Category from './pages/categories/Category';
+
+import { PrivateRouter } from './components/private-router/privateRouter';
 
 function App() {
   return (
@@ -36,6 +38,11 @@ function App() {
           <Route path="/category" element={
             <PrivateRouter>
               <Category />
+            </PrivateRouter>} />
+
+          <Route path="/payment-method" element={
+            <PrivateRouter>
+              <PaymentMethod />
             </PrivateRouter>} />
 
 

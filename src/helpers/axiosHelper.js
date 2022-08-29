@@ -2,6 +2,7 @@ import axios from "axios";
 const rootUrl = process.env.REACT_APP_API_ENDPOINT;
 const adminUserEP = rootUrl + "/admin-user";
 const categoryEP = rootUrl + "/category";
+const PMEP = rootUrl + "/payment-method";
 
 
 
@@ -145,3 +146,29 @@ export const deleteCategory = (_id) => {
     }
     return apiProcessor(option);
 }
+
+
+// ========================payment Method==============
+
+export const fetchPM = () => {
+    const option = {
+        method: "get",
+        url:  PMEP ,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
+
+// Post new category
+export const postPM = (data) => {
+    const option = {
+        method: "post",
+        url: categoryEP,
+        data,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
+
