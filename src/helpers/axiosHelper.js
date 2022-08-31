@@ -148,7 +148,7 @@ export const deleteCategory = (_id) => {
 }
 
 
-// ========================payment Method==============
+// ============================================payment Method=====================================================================================
 
 export const fetchPM = () => {
     const option = {
@@ -170,6 +170,9 @@ export const postPM = (data) => {
     }
     return apiProcessor(option);
 }
+
+
+// deleting the payment method from table/database
 
 export const deletePM = (_id) => {
     const option = {

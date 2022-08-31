@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { getPMAction } from '../../pages/payment-method/paymentAction';
+import { deletePMAction, getPMAction } from '../../pages/payment-method/paymentAction';
 
 const PaymentMethodTable = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,13 @@ const PaymentMethodTable = () => {
 
   const { paymentMethods } = useSelector((state) => state.paymentMethod);
   const amount = useSelector((state) => state.paymentMethod);
-  console.log(paymentMethods, "asas", amount)
+
+
+  const handleOnDelete = (_id) => {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      dispatch(deletePMAction(_id));
+    }
+  }
 
 
   return (
@@ -32,14 +38,14 @@ const PaymentMethodTable = () => {
         <tbody>
           {paymentMethods.length > 0 &&
             paymentMethods.map((item, i) => (
-              <tr key={item.id}>
+              <tr key={item._id}>
                 <td>{i + 1}</td>
                 <td>{item.status}</td>
                 <td>{item.name}</td>
                 <td>
                   <Button variant="warning">Edit</Button>{" "}
-                  <Button variant="danger">Delete</Button>
-                  </td>
+                  <Button variant="danger" onClick={() => handleOnDelete(item._id)}>Delete</Button>
+                </td>
               </tr>
             ))
           }
