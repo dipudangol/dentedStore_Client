@@ -164,11 +164,19 @@ export const fetchPM = () => {
 export const postPM = (data) => {
     const option = {
         method: "post",
-        url: categoryEP,
+        url: PMEP,
         data,
         isPrivate: true,
     }
     return apiProcessor(option);
 }
 
+export const deletePM = (_id) => {
+    const option = {
+        method: "delete",
+        url: PMEP + '/' + _id,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
 
