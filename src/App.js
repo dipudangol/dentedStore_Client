@@ -15,6 +15,8 @@ import PaymentMethod from './pages/payment-method/PaymentMethod';
 import Category from './pages/categories/Category';
 
 import { PrivateRouter } from './components/private-router/privateRouter';
+import { NewProducts } from './pages/products/NewProducts';
+import { EditProduct } from './pages/products/EditProduct';
 
 function App() {
   return (
@@ -43,6 +45,16 @@ function App() {
           <Route path="/payment-method" element={
             <PrivateRouter>
               <PaymentMethod />
+            </PrivateRouter>} />
+
+          <Route path="/product/new" element={
+            <PrivateRouter>
+              <NewProducts />
+            </PrivateRouter>} />
+
+          <Route path="/product/edit/:_id" element={
+            <PrivateRouter>
+              <EditProduct />
             </PrivateRouter>} />
 
 

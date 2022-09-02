@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { deletePM, fetchPM, postPM } from "../../helpers/axiosHelper"
+import { deletePM, fetchPM, postPM, updatePM } from "../../helpers/axiosHelper"
 import { setModalShow } from "../system-state/systemSlice";
 import { setPaymentMethods } from './paymentSlice';
 
@@ -19,23 +19,23 @@ export const postPMAction = (data) => async (dispatch) => {
 
     const { status, message } = await pormisePending;
     toast[status](message);
-    status === "success"  && dispatch(setModalShow()) && dispatch(getPMAction());
+    status === "success" && dispatch(setModalShow()) && dispatch(getPMAction());
 
 }
 
-///updating the categories
+// /updating the payment method
 
-// export const updatePMAction = (data) => async (dispatch) => {
-//     const pormisePending = updateCategory(data);
-//     toast.promise(pormisePending, { pending: "Please wait..." });
+export const updatePMAction = (data) => async (dispatch) => {
+    const pormisePending = updatePM(data);
+    toast.promise(pormisePending, { pending: "Please wait..." });
 
-//     const { status, message } = await pormisePending;
-//     toast[status](message);
-//     status === "success" && dispatch(getCategoryAction());
-// }
+    const { status, message } = await pormisePending;
+    toast[status](message);
+    status === "success" && dispatch(getPMAction()) && dispatch(setModalShow());
+}
 
 
-//deleting the categories
+//deleting the payment method
 export const deletePMAction = (_id) => async (dispatch) => {
     const pormisePending = deletePM(_id);
     toast.promise(pormisePending, { pending: "Please wait ..." });

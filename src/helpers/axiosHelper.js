@@ -3,6 +3,7 @@ const rootUrl = process.env.REACT_APP_API_ENDPOINT;
 const adminUserEP = rootUrl + "/admin-user";
 const categoryEP = rootUrl + "/category";
 const PMEP = rootUrl + "/payment-method";
+const productEP = rootUrl + "/product";
 
 
 
@@ -153,7 +154,7 @@ export const deleteCategory = (_id) => {
 export const fetchPM = () => {
     const option = {
         method: "get",
-        url:  PMEP ,
+        url: PMEP,
         isPrivate: true,
     }
     return apiProcessor(option);
@@ -183,3 +184,59 @@ export const deletePM = (_id) => {
     return apiProcessor(option);
 }
 
+// update payment method
+export const updatePM = (data) => {
+    const option = {
+        method: "put",
+        url: PMEP,
+        data,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
+
+// ================================================products============================================================
+export const fetchProduct = () => {
+    const option = {
+        method: "get",
+        url: productEP,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
+
+// Post new product
+export const postProduct = (data) => {
+    const option = {
+        method: "post",
+        url: productEP,
+        data,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
+
+// deleting the PRODUCT
+
+export const deleteProduct = (_id) => {
+    const option = {
+        method: "delete",
+        url: productEP + '/' + _id,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
+// update payment method
+export const updateProduct = (data) => {
+    const option = {
+        method: "put",
+        url: productEP,
+        data,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}

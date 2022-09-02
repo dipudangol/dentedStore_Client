@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import AdminLayout from '../../components/layout/AdminLayout'
@@ -9,10 +9,14 @@ import { setModalShow } from '../system-state/systemSlice'
 const PaymentMethod = () => {
 
     const dispatch = useDispatch();
+    const [showform, setShowform] = useState(false);
 
-    const handleOnClick = () => {
+    const handleOnAdd = (str) => {
         dispatch(setModalShow());
+        setShowform(str);
     }
+
+
     return (
         <AdminLayout>
             <h4 className="py-4">Payment Method Managment</h4>
@@ -22,11 +26,11 @@ const PaymentMethod = () => {
 
             <hr />
             <div className='text-end py-3'>
-                <Button variant="info" onClick={handleOnClick}> {"  "}
+                <Button variant="info" onClick={() => handleOnAdd("add")}> {"  "}
                     <i className="fa-solid fa-plus"></i> Add New Payment Method {" "}
                 </Button>
             </div>
-            <PaymentMethodTable />
+            <PaymentMethodTable showform={showform} handleOnAdPM={handleOnAdd} />
         </AdminLayout>
     )
 }

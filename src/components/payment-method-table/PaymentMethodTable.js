@@ -2,8 +2,12 @@ import React, { useEffect } from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { deletePMAction, getPMAction } from '../../pages/payment-method/paymentAction';
+import { setSelectedPM } from '../../pages/payment-method/paymentSlice';
+import { setModalShow } from '../../pages/system-state/systemSlice';
+import { AddPaymentMethod } from '../payment-method-forms/AddPaymentMethod';
+import { EditPaymentMethod } from '../payment-method-forms/EditPaymentMethod';
 
-const PaymentMethodTable = () => {
+const PaymentMethodTable = ({ showform, handleOnAdPM }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,9 +26,19 @@ const PaymentMethodTable = () => {
     }
   }
 
+  const handleOnEdit = (item) => {
+    dispatch(setSelectedPM(item));
+    handleOnAdPM("edit")
+
+  }
+  const PMform = {
+    add: <AddPaymentMethod />,
+    edit: <EditPaymentMethod />,
+  };
 
   return (
     <div>
+      {PMform[showform]};
 
       <Table striped bordered hover>
         <thead>
@@ -43,7 +57,7 @@ const PaymentMethodTable = () => {
                 <td>{item.status}</td>
                 <td>{item.name}</td>
                 <td>
-                  <Button variant="warning">Edit</Button>{" "}
+                  <Button variant="warning" onClick={() => handleOnEdit(item)}>Edit</Button>{" "}
                   <Button variant="danger" onClick={() => handleOnDelete(item._id)}>Delete</Button>
                 </td>
               </tr>
