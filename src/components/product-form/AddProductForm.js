@@ -133,7 +133,7 @@ export const AddProductForm = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     // set data with formdata
-    const formData = new FormData();
+    let formData = new FormData();
     for (const key in form) {
       formData.append(key, form[key]);
     }
@@ -160,9 +160,9 @@ export const AddProductForm = () => {
         <Form.Group className="mb-3">
           <Form.Label>Assign to category</Form.Label>
           <Form.Select name="catId" onChange={handleOnchange} required>
-            <option value="">Select Parent Category</option>
+            <option value="">Select Category</option>
             {
-              categories.length > 0 && categories.map((item) => !item.parentId && <option value={item._id}>{item.name}</option>)
+              categories.length > 0 && categories.map((item) => !item.parentId && <option key={item._id} value={item._id}>{item.name}</option>)
             }
           </Form.Select>
         </Form.Group>
