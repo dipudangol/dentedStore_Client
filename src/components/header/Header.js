@@ -21,7 +21,7 @@ export const Header = () => {
     <Navbar bg="success" variant="dark" expand="md">
       <Container>
         {user._id && (
-          <i className="fa-regular fa-bars" onClick={handleShow}></i>
+          <i className="fa-sharp fa-solid fa-bars" onClick={handleShow}></i>
         )}
         <Navbar.Brand href="#">  Dented Store</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

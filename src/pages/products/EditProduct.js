@@ -3,6 +3,8 @@ import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import AdminLayout from '../../components/layout/AdminLayout'
+import { CustomModal } from '../../components/model/Model'
+import { ProductTable } from '../../components/product-table/ProductTable'
 import { deleteProductAction, getSingleProductsAction } from './productAction'
 
 export const EditProduct = () => {
@@ -38,7 +40,9 @@ export const EditProduct = () => {
         </Link>
         <h1>Update Products</h1>
         <hr />
-        <div className=''>edit product goes here</div>
+        <div className=''>
+      
+        </div>
         <div className='text-end py-3'>
           <Button variant="danger" onClick={() => handleOnDelete(_id)}>Delete Product</Button>
         </div>

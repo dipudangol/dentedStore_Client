@@ -38,8 +38,7 @@ const PaymentMethodTable = ({ showform, handleOnAdPM }) => {
 
   return (
     <div>
-      {PMform[showform]};
-
+      {PMform[showform]}
       <Table striped bordered hover>
         <thead>
           <tr>

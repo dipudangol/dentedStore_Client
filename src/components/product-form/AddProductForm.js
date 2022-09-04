@@ -108,6 +108,7 @@ export const AddProductForm = () => {
       type: "file",
       accept: "image/*",
       multiple: true,
+      required:true,
     }
 
   ];
