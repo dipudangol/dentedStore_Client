@@ -1,9 +1,14 @@
 import React from 'react'
+import "./Header.css";
+
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from "react-router-dom"
 import { logoutAdminAction } from '../../pages/login/userAction'
 import { setShowSideMenu } from '../../pages/system-state/systemSlice'
+
+import SearchIcon from '@mui/icons-material/Search';
+
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -29,7 +34,10 @@ export const Header = () => {
           <Nav className="me-auto">
 
             {user._id ? (
-              <Link className="nav-link" to="/" onClick={handleOnlogout}>Logout</Link>
+              <>
+                <span>Hello, {user.fName}</span>
+                <Link className="nav-link" to="/" onClick={handleOnlogout}>Logout</Link>
+              </>
 
             ) : (<>
               <Link className="nav-link" to="/">Login</Link>

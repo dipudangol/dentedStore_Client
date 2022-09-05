@@ -8,7 +8,9 @@ export const loginUserAction = (data) => async (dispatch) => {
 
     toast.promise(resultPromise, { pending: "please wait.." });
     const { status, message, user, accessJWT, refreshJWT } = await resultPromise
-    toast[status](message)
+    toast[status]( status, {
+        theme: "dark"
+    })
 
     if (status === "success") {
         sessionStorage.setItem("accessJWT", accessJWT);

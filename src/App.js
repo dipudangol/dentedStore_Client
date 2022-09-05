@@ -65,7 +65,15 @@ function App() {
           <Route path="/admin/verify-email" element={<EmailVerification />} />
         </Routes>
       </BrowserRouter>
-      <ToastContainer />
+      <ToastContainer position="top-center"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
     </div>
   );
 }
