@@ -241,3 +241,5 @@ export const updateProduct = (data) => {
     }
     return apiProcessor(option);
 }
+
+

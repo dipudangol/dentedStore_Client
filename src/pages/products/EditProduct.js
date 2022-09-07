@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import AdminLayout from '../../components/layout/AdminLayout'
 import { CustomModal } from '../../components/model/Model'
+import { EditProductForm } from '../../components/product-form/EditProfuctForm'
 import { ProductTable } from '../../components/product-table/ProductTable'
 import { deleteProductAction, getSingleProductsAction } from './productAction'
 
+
 export const EditProduct = () => {
+
 
   const dispatch = useDispatch();
   const { _id } = useParams();
+  
 
   const { selectedProduct } = useSelector(state => state.products);
 
@@ -29,6 +33,8 @@ export const EditProduct = () => {
     }
   }
 
+
+
   return (
     <AdminLayout>
 
@@ -41,7 +47,7 @@ export const EditProduct = () => {
         <h1>Update Products</h1>
         <hr />
         <div className=''>
-      
+          <EditProductForm />
         </div>
         <div className='text-end py-3'>
           <Button variant="danger" onClick={() => handleOnDelete(_id)}>Delete Product</Button>

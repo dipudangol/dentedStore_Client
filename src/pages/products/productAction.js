@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { deleteProduct, fetchProduct, postProduct } from '../../helpers/axiosHelper';
+import { deleteProduct, fetchProduct, postProduct, updateProduct } from '../../helpers/axiosHelper';
 import { setProducts, setSelectedProduct } from "./productSlice";
 
 export const getProductsAction = () => async (dispatch) => {
@@ -16,6 +16,16 @@ export const getSingleProductsAction = (_id) => async (dispatch) => {
 // posting products to database
 export const postProductAction = async (data) => {
     const pormisePending = postProduct(data);
+    toast.promise(pormisePending, { pending: "Please wait..." });
+
+    const { status, message } = await pormisePending;
+    toast[status](message);
+
+}
+
+// update products to database
+export const updateProductAction = async (data) => {
+    const pormisePending = updateProduct(data);
     toast.promise(pormisePending, { pending: "Please wait..." });
 
     const { status, message } = await pormisePending;
