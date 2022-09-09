@@ -36,6 +36,10 @@ export const Header = () => {
             {user._id ? (
               <>
                 <span>Hello, {user.fName}</span>
+                <Link className="nav-link" to="/admin-profile" >
+                  <i className="fa fa-user" aria-hidden="true"></i>
+                  {'  '}
+                  Profile</Link>
                 <Link className="nav-link" to="/" onClick={handleOnlogout}>Logout</Link>
               </>
 

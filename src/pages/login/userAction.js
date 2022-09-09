@@ -1,4 +1,4 @@
-import { getAdminUser, getNewAccessJWT, loginAdminUser } from "../../helpers/axiosHelper";
+import { getAdminUser, getNewAccessJWT, loginAdminUser, updateAdminUser } from "../../helpers/axiosHelper";
 import { toast } from "react-toastify"
 import { setAdminUser } from "./userSlice";
 
@@ -8,7 +8,7 @@ export const loginUserAction = (data) => async (dispatch) => {
 
     toast.promise(resultPromise, { pending: "please wait.." });
     const { status, message, user, accessJWT, refreshJWT } = await resultPromise
-    toast[status]( status, {
+    toast[status](status, {
         theme: "dark"
     })
 
@@ -55,3 +55,11 @@ export const autoLoginAction = () => async (dispatch) => {
 };
 
 
+export const updateAdminProfileAction = data => async (dispatch) => {
+    const promisePending = updateAdminUser(data);
+    toast.promise(promisePending, { pending: "please wait..." });
+    const { status, message } = await promisePending;
+    toast[status](message);
+
+    status === "success" && dispatch(getAdminUserAction());
+}

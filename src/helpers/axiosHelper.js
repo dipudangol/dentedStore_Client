@@ -75,6 +75,16 @@ export const loginAdminUser = (data) => {
     return apiProcessor(option);
 }
 
+//update admin users
+export const updateAdminUser = (data) => {
+    const option = {
+        method: "put",
+        url: adminUserEP,
+        isPrivate: true,
+        data,
+    }
+    return apiProcessor(option);
+}
 
 //FETCH admin user
 export const getAdminUser = () => {

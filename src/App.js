@@ -17,6 +17,7 @@ import Category from './pages/categories/Category';
 import { PrivateRouter } from './components/private-router/privateRouter';
 import { NewProducts } from './pages/products/NewProducts';
 import { EditProduct } from './pages/products/EditProduct';
+import { AdminProfile } from './pages/admin-profile/AdminProfile';
 
 function App() {
   return (
@@ -45,6 +46,11 @@ function App() {
           <Route path="/payment-method" element={
             <PrivateRouter>
               <PaymentMethod />
+            </PrivateRouter>} />
+
+            <Route path="/admin-profile" element={
+            <PrivateRouter>
+              <AdminProfile />
             </PrivateRouter>} />
 
           <Route path="/product/new" element={
