@@ -139,7 +139,7 @@ export const EditProductForm = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     // set data with formdata
-    let formData = new FormData();
+    const formData = new FormData();
     const { slug, sku, rating, createdAt, updatedAt, __v, ...rest } = form;
     for (const key in rest) {
       formData.append(key, rest[key]);
@@ -150,7 +150,7 @@ export const EditProductForm = () => {
     //attach the images to append formdata 
     [...images].map((img) => formData.append('newImages', img));
     formData.append("imgToDelete", imageToDelete);
-    console.log(formData);
+
     dispatch(updateProductAction(formData));
   };
 

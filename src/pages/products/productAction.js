@@ -24,12 +24,13 @@ export const postProductAction = async (data) => {
 }
 
 // update products to database
-export const updateProductAction = async (data) => {
+export const updateProductAction = (data) => async (dispatch) => {
     const pormisePending = updateProduct(data);
     toast.promise(pormisePending, { pending: "Please wait..." });
 
     const { status, message } = await pormisePending;
     toast[status](message);
+    status === "success" && dispatch(getSingleProductsAction(data._id));
 
 }
 
