@@ -86,6 +86,19 @@ export const updateAdminUser = (data) => {
     return apiProcessor(option);
 }
 
+//update admin user password
+export const updateAdminUserPassword = (data) => {
+    const option = {
+        method: "patch",
+        url: adminUserEP,
+        isPrivate: true,
+        data,
+    }
+    return apiProcessor(option);
+}
+
+
+
 //FETCH admin user
 export const getAdminUser = () => {
     const option = {

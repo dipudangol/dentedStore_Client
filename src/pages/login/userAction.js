@@ -1,4 +1,4 @@
-import { getAdminUser, getNewAccessJWT, loginAdminUser, updateAdminUser } from "../../helpers/axiosHelper";
+import { getAdminUser, getNewAccessJWT, loginAdminUser, updateAdminUser, updateAdminUserPassword } from "../../helpers/axiosHelper";
 import { toast } from "react-toastify"
 import { setAdminUser } from "./userSlice";
 
@@ -63,3 +63,12 @@ export const updateAdminProfileAction = data => async (dispatch) => {
 
     status === "success" && dispatch(getAdminUserAction());
 }
+
+export const updateAdminPasswordAction = async (data) => {
+    const promisePending = updateAdminUserPassword(data);
+    toast.promise(promisePending, { pending: "please wait..." });
+    const { status, message } = await promisePending;
+    toast[status](message);
+
+}
+

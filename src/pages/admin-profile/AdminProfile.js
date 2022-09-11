@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Form } from 'react-bootstrap';
+import { Alert, Button, Form, FormText } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { CustomInputField } from '../../components/customInputField/CustomInputField';
 import AdminLayout from '../../components/layout/AdminLayout'
-import { updateAdminProfileAction } from '../login/userAction';
+import { updateAdminPasswordAction, updateAdminProfileAction } from '../login/userAction';
+
 
 
 
 export const AdminProfile = () => {
     const [form, setForm] = useState({});
     const [password, setPassword] = useState({});
+    const [error, setError] = useState('');
 
 
     const dispatch = useDispatch();
@@ -25,13 +27,6 @@ export const AdminProfile = () => {
             ...form,
             [name]: value
         })
-        return;
-    }
-    const handleOnPasswordChange = () => {
-        return;
-
-
-
     }
 
     const handleOnProfileSubmit = (e) => {
@@ -40,6 +35,43 @@ export const AdminProfile = () => {
         dispatch(updateAdminProfileAction({ address, dob, fName, lName, pone, _id }));
 
     }
+
+    const handleOnPasswordUpdate = (e) => {
+        const { newPassword, confirmPassword } = password;
+        const { name, value } = e.target;
+        setError("");
+        if (name === "confirmPassword") {
+            (newPassword !== value) && setError("password doesnt' match");
+            !newPassword && setError("password field must be provided");
+            newPassword.length < 6 && setError("password must be 6 character long");
+            !/[a-z]/.test(newPassword) && setError("Must have at least one lower character");
+            !/[A-Z]/.test(newPassword) && setError("Must have at least one upper character");
+            !/[0-9]/.test(newPassword) && setError("Must have at least one number");
+        }
+        setPassword({
+            ...password,
+            [name]: value,
+        })
+
+    }
+
+    const handleOnPasswordSubmit = (e) => {
+
+        e.preventDefault()
+        console.log(password);
+        const { newPassword, confirmPassword } = password;
+        if (!password || newPassword !== confirmPassword) {
+            return alert(
+                "Either current password is enmpty or new password and confirm password doesn't match"
+            );
+        }
+        updateAdminPasswordAction({
+            password: password.password,
+            newPassword,
+            _id: user._id,
+        })
+    }
+
 
     const inputFields = [
         {
@@ -90,10 +122,11 @@ export const AdminProfile = () => {
 
 
     ];
+
     return (
         <AdminLayout>
 
-            <div>AdminProfile</div>
+            <div>User Profile</div>
             <div className='user-profile'>
                 <h2>Update your profile</h2>
                 <hr />
@@ -111,11 +144,18 @@ export const AdminProfile = () => {
             <div className='mt-5 py-5'>
                 <h2>Update Password</h2>
                 <hr />
-                <Form>
-                    <CustomInputField name="password" type="password" required={true} label="current password" />
-                    <CustomInputField name="newPassword" type="password" required={true} label="New password" />
-                    <CustomInputField name="confirmPassword" type="password" required={true} label="confirm passsword" />
-                    <Button type="submit" variant="danger">Update Password</Button>
+                <Form onSubmit={handleOnPasswordSubmit}>
+                    <CustomInputField onChange={handleOnPasswordUpdate} name="password" type="password" required={true} label="current password" />
+                    <CustomInputField onChange={handleOnPasswordUpdate} name="newPassword" type="password" required={true} label="New password" />
+                    <Form.Group className="mb-3">
+                        <FormText>Password must be unique, 6 character long containing lower case, upper case and characters</FormText>
+                    </Form.Group>
+
+                    <CustomInputField onChange={handleOnPasswordUpdate} name="confirmPassword" type="password" required={true} label="confirm passsword" />
+                    {error &&
+                        <Alert variant="danger">{error}</Alert>
+                    }
+                    <Button type="submit" variant="danger" disabled={error}>Update Password</Button>
                 </Form>
             </div>
         </AdminLayout>
