@@ -18,6 +18,7 @@ import { PrivateRouter } from './components/private-router/privateRouter';
 import { NewProducts } from './pages/products/NewProducts';
 import { EditProduct } from './pages/products/EditProduct';
 import { AdminProfile } from './pages/admin-profile/AdminProfile';
+import ResetPassword from './pages/login/ResetPassword';
 
 function App() {
   return (
@@ -69,6 +70,7 @@ function App() {
           <Route path="/" element={<LoginPage />} />
           <Route path="/Register" element={<AdminRegistration />} />
           <Route path="/admin/verify-email" element={<EmailVerification />} />
+          <Route path="/forget-password" element={<ResetPassword />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer position="top-center"

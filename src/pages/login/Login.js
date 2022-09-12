@@ -19,7 +19,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         user._id ? navigate(origin) : dispatch(autoLoginAction());
-    }, [user, navigate, dispatch]);
+    }, [user, navigate, dispatch, origin ]);
 
     const fields = [
 
@@ -73,6 +73,9 @@ const LoginPage = () => {
                             Login
                         </Button>
                     </Form>
+                    <div className='text-end py-3'>Forget{ " "} 
+                        < a href="/forget-password">Password</a>?
+                    </div>
                 </ div>
             </Container>
             <Footer />
