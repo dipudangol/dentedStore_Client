@@ -98,16 +98,27 @@ export const updateAdminUserPassword = (data) => {
 }
 
 
-//reset admin user password
-export const resetAdminUserPassword = (data) => {
+//request otp for reseting user password
+export const requestOtpresetAdminUserPassword = (data) => {
     const option = {
         method: "post",
-        url: adminUserEP +'/request-password-reset-otp',
+        url: adminUserEP + '/request-password-reset-otp',
         data,
     }
     return apiProcessor(option);
 }
 
+
+
+//request otp for reseting user password
+export const resetAdminUserPassword = (data) => {
+    const option = {
+        method: "patch",
+        url: adminUserEP + '/reset-password',
+        data,
+    }
+    return apiProcessor(option);
+}
 
 
 //FETCH admin user

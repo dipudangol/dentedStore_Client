@@ -4,26 +4,31 @@ import { Footer } from '../../components/footer/Footer'
 import { Header } from '../../components/header/Header'
 import { RequestOTP } from '../../components/reset-password/RequestOTP'
 import { ResetPasswordForm } from '../../components/reset-password/ResetPasswordForm'
-import { resetAdminUserPassword } from '../../helpers/axiosHelper'
+import { requestOtpresetAdminUserPassword, resetAdminUserPassword } from '../../helpers/axiosHelper'
 
 
 const ResetPassword = () => {
     const [passwordFrom, setPasswordForm] = useState("otp");
     const [resp, setResp] = useState({});
+    const [userEmail, setUserEmail] = useState("");
 
     const handleOnOTPRequest = async (email) => {
         if (!email) {
             return alert("No email received");
         }
-        const response = await resetAdminUserPassword({ email });
+        setUserEmail(email);
+        const response = await requestOtpresetAdminUserPassword({ email });
         setResp(response);
         console.log(resp);
         resp.status === "success" && setPasswordForm("password");
 
     };
 
-    const handleOnPasswordUpdate = data => {
-        console.log(data);
+    const handleOnPasswordUpdate = async (data) => {
+        data.email = userEmail;
+        const response = await resetAdminUserPassword(data);
+        setResp(response);
+        console.log(response);
     }
 
     const form = {
