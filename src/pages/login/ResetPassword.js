@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Alert, Container } from 'react-bootstrap'
 import { Footer } from '../../components/footer/Footer'
 import { Header } from '../../components/header/Header'
@@ -9,6 +9,7 @@ import { requestOtpresetAdminUserPassword, resetAdminUserPassword } from '../../
 
 const ResetPassword = () => {
     const [passwordFrom, setPasswordForm] = useState("otp");
+    useEffect(() => setPasswordForm(passwordFrom), [passwordFrom]);
     const [resp, setResp] = useState({});
     const [userEmail, setUserEmail] = useState("");
 
@@ -19,7 +20,6 @@ const ResetPassword = () => {
         setUserEmail(email);
         const response = await requestOtpresetAdminUserPassword({ email });
         setResp(response);
-        console.log(resp);
         resp.status === "success" && setPasswordForm("password");
 
     };
@@ -28,7 +28,6 @@ const ResetPassword = () => {
         data.email = userEmail;
         const response = await resetAdminUserPassword(data);
         setResp(response);
-        console.log(response);
     }
 
     const form = {

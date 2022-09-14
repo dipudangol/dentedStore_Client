@@ -43,7 +43,7 @@ const SideMenu = () => {
                             <Link to="" onClick={handleClose} className="nav-link"><i className=" fa-solid fa-people-group"></i>  Customers </Link>
                         </ListGroup.Item >
                         <ListGroup.Item>
-                            <Link to="" onClick={handleClose} className="nav-link"> <i className=" fa-solid fa-cart-arrow-down"></i> Orders </Link >
+                            <Link to="/orders" onClick={handleClose} className="nav-link"> <i className=" fa-solid fa-cart-arrow-down"></i> Orders </Link >
                         </ListGroup.Item >
                         <ListGroup.Item>
                             <Link to="" onClick={handleClose} className="nav-link">

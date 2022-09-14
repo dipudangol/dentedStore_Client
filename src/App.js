@@ -13,12 +13,14 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Products from './pages/products/Products';
 import PaymentMethod from './pages/payment-method/PaymentMethod';
 import Category from './pages/categories/Category';
+import Order from './pages/orders/Order';
 
 import { PrivateRouter } from './components/private-router/privateRouter';
 import { NewProducts } from './pages/products/NewProducts';
 import { EditProduct } from './pages/products/EditProduct';
 import { AdminProfile } from './pages/admin-profile/AdminProfile';
 import ResetPassword from './pages/login/ResetPassword';
+import OrderDetails from './pages/orders/OrderDetails';
 
 function App() {
   return (
@@ -42,6 +44,16 @@ function App() {
           <Route path="/category" element={
             <PrivateRouter>
               <Category />
+            </PrivateRouter>} />
+
+          <Route path="/orders" element={
+            <PrivateRouter>
+              <Order />
+            </PrivateRouter>} />
+
+            <Route path="/order/:_id" element={
+            <PrivateRouter>
+              <OrderDetails />
             </PrivateRouter>} />
 
           <Route path="/payment-method" element={

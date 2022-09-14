@@ -14,7 +14,7 @@ export const ResetPasswordForm = ({ handleOnPasswordUpdate }) => {
       [name]: value,
     });
     setError("");
-    const { password, ConfirmPassword } = form;
+    const { password } = form;
     //check for errors
     //password field required check
     if (name === "ConfirmPassword") {
@@ -30,7 +30,7 @@ export const ResetPasswordForm = ({ handleOnPasswordUpdate }) => {
 
   const handleOnSubmit = e => {
     e.preventDefault();
-    const {ConfirmPassword, ...rest}=form;
+    const { ConfirmPassword, ...rest } = form;
     handleOnPasswordUpdate(rest);
 
   }

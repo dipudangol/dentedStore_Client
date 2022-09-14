@@ -4,6 +4,7 @@ import systemReducer from "./pages/system-state/systemSlice";
 import categoryReducer from "./pages/categories/categorySlice";
 import paymentReducer from "./pages/payment-method/paymentSlice";
 import productReducer from "./pages/products/productSlice";
+import orderReducer from "./pages/orders/orderSlice";
 
 const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
         category: categoryReducer,
         paymentMethod: paymentReducer,
         products: productReducer,
+        orders: orderReducer,
     },
 });
 

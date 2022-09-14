@@ -4,6 +4,7 @@ const adminUserEP = rootUrl + "/admin-user";
 const categoryEP = rootUrl + "/category";
 const PMEP = rootUrl + "/payment-method";
 const productEP = rootUrl + "/product";
+const orderEP = rootUrl + "/order";
 
 
 
@@ -287,4 +288,50 @@ export const updateProduct = (data) => {
     return apiProcessor(option);
 }
 
+// ======orders==================
 
+export const fetchOrders = (_id) => {
+    const option = {
+        method: "get",
+        url: _id ? orderEP + "/" + _id : orderEP,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
+
+
+// Post new product
+export const postOrder = (data) => {
+    const option = {
+        method: "post",
+        url: orderEP,
+        data,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
+
+// deleting the Order
+
+export const deleteOrder = (_id, data) => {
+    const option = {
+        method: "delete",
+        url: orderEP + '/' + _id,
+        isPrivate: true,
+        data,
+    }
+    return apiProcessor(option);
+}
+
+// update payment method
+export const updateOrder = (data) => {
+    const option = {
+        method: "put",
+        url: orderEP,
+        data,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
