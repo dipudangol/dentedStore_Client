@@ -1,0 +1,24 @@
+.card {
+  background: linear-gradient(to right, purple, pink);
+
+}
+
+.card-body {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 3rem;
+  border: 6px double yellowgreen;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
