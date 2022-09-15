@@ -5,6 +5,8 @@ const categoryEP = rootUrl + "/category";
 const PMEP = rootUrl + "/payment-method";
 const productEP = rootUrl + "/product";
 const orderEP = rootUrl + "/order";
+const userEP = rootUrl + "/users";
+const reviewEP = rootUrl + "/reviews";
 
 
 
@@ -331,6 +333,29 @@ export const updateOrder = (data) => {
         method: "put",
         url: orderEP,
         data,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
+
+// ======user==================
+
+export const fetchUsers = (_id) => {
+    const option = {
+        method: "get",
+        url: _id ? userEP + "/" + _id : userEP,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
+// ======revirews==================
+
+export const fetchReviews = (_id) => {
+    const option = {
+        method: "get",
+        url: _id ? reviewEP + "/" + _id : reviewEP,
         isPrivate: true,
     }
     return apiProcessor(option);

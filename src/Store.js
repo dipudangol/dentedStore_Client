@@ -5,6 +5,8 @@ import categoryReducer from "./pages/categories/categorySlice";
 import paymentReducer from "./pages/payment-method/paymentSlice";
 import productReducer from "./pages/products/productSlice";
 import orderReducer from "./pages/orders/orderSlice";
+import clientReducer from "./pages/customers/customerSlice";
+import reviewReducer from "./pages/reviews/reviewSlice";
 
 const store = configureStore({
     reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
         paymentMethod: paymentReducer,
         products: productReducer,
         orders: orderReducer,
+        users: clientReducer,
+        review: reviewReducer,
     },
 });
 

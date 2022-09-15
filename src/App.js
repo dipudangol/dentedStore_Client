@@ -21,6 +21,8 @@ import { EditProduct } from './pages/products/EditProduct';
 import { AdminProfile } from './pages/admin-profile/AdminProfile';
 import ResetPassword from './pages/login/ResetPassword';
 import OrderDetails from './pages/orders/OrderDetails';
+import Reviews from './pages/reviews/Reviews';
+import Customers from './pages/customers/Customers';
 
 function App() {
   return (
@@ -74,6 +76,16 @@ function App() {
           <Route path="/product/edit/:_id" element={
             <PrivateRouter>
               <EditProduct />
+            </PrivateRouter>} />
+
+            <Route path="/reviews" element={
+            <PrivateRouter>
+              <Reviews />
+            </PrivateRouter>} />
+
+            <Route path="/users" element={
+            <PrivateRouter>
+              <Customers />
             </PrivateRouter>} />
 
 
