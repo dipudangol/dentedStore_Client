@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { CustomTable } from '../../components/custom-table/CustomTable';
 import { CustomCard } from '../../components/CustomCard';
 import AdminLayout from '../../components/layout/AdminLayout'
@@ -8,8 +9,8 @@ import { Scrollbar } from '../../components/scrollbar/Scrollbar';
 import { getProductsAction } from '../products/productAction';
 import { DisplayStats } from './DisplayStats';
 
-
 const Dashboard = () => {
+
   const clientTableHead = ["First Name", "Last Name", "Joined Date"]
   const clientInfo = [
     {
@@ -24,28 +25,28 @@ const Dashboard = () => {
     },
 
   ]
-  const OrderHead=["Status","Name","Order Date","Order Total","Payment Status" ]
-  const OrderInfo=[
+  const OrderHead = ["Status", "Name", "Order Date", "Order Total", "Payment Status"]
+  const OrderInfo = [
     {
-      status:"active",
-      fName:"Dipu",
-      lName:"dangol",
-      OrderDate:"2020-1-4",
-      PaymentStatus:"pending",     
+      status: "active",
+      fName: "Dipu",
+      lName: "dangol",
+      OrderDate: "2020-1-4",
+      PaymentStatus: "pending",
     },
     {
-      status:"active",
-      fName:"Dipu",
-      lName:"dangol",
-      OrderDate:"2020-1-4",
-      PaymentStatus:"pending",     
+      status: "active",
+      fName: "Dipu",
+      lName: "dangol",
+      OrderDate: "2020-1-4",
+      PaymentStatus: "pending",
     }
   ]
-
-  const dispatch = useDispatch();
   const { productList } = useSelector(state => state.products);
+  const dispatch = useDispatch();
+  const activeProduct = productList.filter(item => item.status === "active")
 
-  useEffect(() => { dispatch(getProductsAction()) }, [dispatch]);
+  useEffect(() => { !productList.length && dispatch(getProductsAction()) }, [dispatch]);
 
   return (
     <AdminLayout>
@@ -57,22 +58,19 @@ const Dashboard = () => {
       <div className='products mt-3 py-3'>
         <h5>Product Summary</h5>
         <hr />
-        <Row className='d-flex flex-md-column g-4'>
+        <Row className='d-flex g-4'>
           <Col md="4">
-            <CustomCard count="4" title="Bought at there" />
+            <CustomCard count={productList.length} title="Total Products" />
           </Col>
 
           <Col md="4">
-            <CustomCard count="4" title="Bought at there" />
+            <CustomCard count={activeProduct.length} title="Active products" />
           </Col>
 
           <Col md="4">
-            <CustomCard count="4" title="Bought at there" />
+            <CustomCard count={productList.length - activeProduct.length} title="Bought at there" />
           </Col>
 
-          <Col md="4">
-            <CustomCard count="4" title="Bought at there" />
-          </Col>
         </Row>
       </div>
 
@@ -81,13 +79,15 @@ const Dashboard = () => {
       {/* client summary */}
       <div className='my-5'>
         <h5>Client Summary</h5>
+
         <hr />
         <CustomTable tableHead={clientTableHead} tableData={clientInfo} />
       </div>
 
- {/* client summary */}
- <div className='my-5'>
-        <h5>Client Order</h5>
+      {/* client summary */}
+      <div className='my-5'>
+        <h5>Client Order {" "}
+          <Link to="/orders" className='text-decoration-blue'>View All Orders</Link></h5>
         <hr />
         <CustomTable tableHead={OrderHead} tableData={OrderInfo} />
       </div>

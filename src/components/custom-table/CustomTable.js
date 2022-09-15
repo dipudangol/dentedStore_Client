@@ -3,7 +3,7 @@ import { Table } from 'react-bootstrap'
 
 export const CustomTable = ({ tableHead = [], tableData = [] }) => {
     return (
-        <Table stripped hover border>
+        <Table striped hover border>
             <thead>
                 <tr>
                     <th>#</th>
