@@ -1,7 +1,8 @@
 import React from 'react'
 import AdminLayout from '../../components/layout/AdminLayout'
 import { OrderTable } from '../../components/order-table/OrderTable'
-
+import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 const Order = () => {
     return (
 
@@ -11,6 +12,11 @@ const Order = () => {
                     Order Management
                 </h1>
                 <OrderTable/>
+                <Link to='/dashboard'>
+          <Button variant="none">
+            <i class="fa-solid fa-angle-left"></i>Back
+          </Button>
+        </Link>
             </AdminLayout>
         </div>
     )

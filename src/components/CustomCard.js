@@ -4,10 +4,10 @@ import './customCard.style.css'
 
 export const CustomCard = ({count, title}) => {
   return (
-    <Card style={{ minWidth: "18rem" }}>
+    <Card className="cardinfo" style={{ minWidth: "18rem" }}>
       <Card.Body className="py-3 text-light">
-        <Card.Title>{count}</Card.Title>
-        <Card.Text className="fw-bolder fs-1">{title}</Card.Text>
+        <Card.Title className='fs-1'>{count}</Card.Title>
+        <Card.Text className="fw-bolder fs-2">{title}</Card.Text>
       </Card.Body>
     </Card>
   );

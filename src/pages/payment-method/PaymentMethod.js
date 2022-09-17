@@ -5,6 +5,7 @@ import AdminLayout from '../../components/layout/AdminLayout'
 import { AddPaymentMethod } from '../../components/payment-method-forms/AddPaymentMethod'
 import PaymentMethodTable from '../../components/payment-method-table/PaymentMethodTable'
 import { setModalShow } from '../system-state/systemSlice'
+import { Link } from 'react-router-dom'
 
 const PaymentMethod = () => {
 
@@ -31,6 +32,11 @@ const PaymentMethod = () => {
                 </Button>
             </div>
             <PaymentMethodTable showform={showform} handleOnAdPM={handleOnAdd} />
+            <Link to='/dashboard'>
+          <Button variant="none">
+            <i class="fa-solid fa-angle-left"></i>Back
+          </Button>
+        </Link>
         </AdminLayout>
     )
 }
