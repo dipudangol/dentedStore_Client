@@ -51,16 +51,17 @@ const Dashboard = () => {
   return (
     <AdminLayout>
 
-      <h4>
-        <hr />Dashboard</h4>
-      <hr />
+      <h4>Dashboard</h4>
+      <hr style={{
+        "width": "15%",
+      }} />
       {/* product summary */}
       <div className='products mt-3 py-3'>
         <h5>Product Summary</h5>
         <hr />
         <Row className='d-flex g-4'>
           <Col md="4">
-            <CustomCard count={productList.length} title="Total Products" />
+            <CustomCard count={productList.length} title="Total Products"  />
           </Col>
 
           <Col md="4">
@@ -87,7 +88,7 @@ const Dashboard = () => {
       {/* client summary */}
       <div className='my-5'>
         <h5>Client Order {" "}
-          <Link to="/orders" className='text-decoration-blue'>View All Orders</Link></h5>
+          <Link to="/orders" className='text-decoration-blue'>View All Orders >></Link></h5>
         <hr />
         <CustomTable tableHead={OrderHead} tableData={OrderInfo} />
       </div>
