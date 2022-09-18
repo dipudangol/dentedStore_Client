@@ -24,6 +24,7 @@ export const ReviewTable = () => {
                         <th>Reviewer Name</th>
                         <th>Rating</th>
                         <th> Review</th>
+                        <th> Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,8 @@ export const ReviewTable = () => {
                                 <td>{item?.reviewby}</td>
                                 <td>{item?.rating}</td>
                                 <td>{item?.review}</td>
+                                <td>
+                                    <a href="">info</a></td>
                                 {/* <td>
                                     <Link to ={`/order/${item?._id}`}>
                                         <Button variant="info">View Order</Button>

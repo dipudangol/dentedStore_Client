@@ -1,6 +1,6 @@
-import { getAdminUser, getNewAccessJWT, loginAdminUser, updateAdminUser, updateAdminUserPassword } from "../../helpers/axiosHelper";
+import { getAdminUser, getAllAdminUser, getNewAccessJWT, loginAdminUser, updateAdminUser, updateAdminUserPassword } from "../../helpers/axiosHelper";
 import { toast } from "react-toastify"
-import { setAdminUser } from "./userSlice";
+import { setAdminUser, setAllAdminUser } from "./userSlice";
 
 
 export const loginUserAction = (data) => async (dispatch) => {
@@ -8,9 +8,7 @@ export const loginUserAction = (data) => async (dispatch) => {
 
     toast.promise(resultPromise, { pending: "please wait.." });
     const { status, message, user, accessJWT, refreshJWT } = await resultPromise
-    toast[status](status, {
-        theme: "dark"
-    })
+    toast[status](message);
 
     if (status === "success") {
         sessionStorage.setItem("accessJWT", accessJWT);
@@ -72,3 +70,9 @@ export const updateAdminPasswordAction = async (data) => {
 
 }
 
+
+// ===================ADMIN USERS================
+export const fetchAdminUsersAction = () => async (dispatch) => {
+    const { status, users } = await getAllAdminUser();
+    status === "success" && dispatch(setAllAdminUser(users));
+} 

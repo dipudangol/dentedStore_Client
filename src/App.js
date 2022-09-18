@@ -23,6 +23,7 @@ import ResetPassword from './pages/login/ResetPassword';
 import OrderDetails from './pages/orders/OrderDetails';
 import Reviews from './pages/reviews/Reviews';
 import Customers from './pages/customers/Customers';
+import { AdminUsers } from './pages/customers/AdminUsers';
 
 function App() {
   return (
@@ -53,7 +54,7 @@ function App() {
               <Order />
             </PrivateRouter>} />
 
-            <Route path="/order/:_id" element={
+          <Route path="/order/:_id" element={
             <PrivateRouter>
               <OrderDetails />
             </PrivateRouter>} />
@@ -63,7 +64,7 @@ function App() {
               <PaymentMethod />
             </PrivateRouter>} />
 
-            <Route path="/admin-profile" element={
+          <Route path="/admin-profile" element={
             <PrivateRouter>
               <AdminProfile />
             </PrivateRouter>} />
@@ -78,21 +79,26 @@ function App() {
               <EditProduct />
             </PrivateRouter>} />
 
-            <Route path="/reviews" element={
+          <Route path="/reviews" element={
             <PrivateRouter>
               <Reviews />
             </PrivateRouter>} />
 
-            <Route path="/users" element={
+          <Route path="/users" element={
             <PrivateRouter>
               <Customers />
+            </PrivateRouter>} />
+
+          <Route path="/admin-users" element={
+            <PrivateRouter>
+              <AdminUsers />
             </PrivateRouter>} />
 
 
 
           {/* public routes */}
           <Route path="/" element={<LoginPage />} />
-          <Route path="/Register" element={<AdminRegistration />} />
+          <Route path="/Register" element={<PrivateRouter> <AdminRegistration /> </PrivateRouter>} />
           <Route path="/admin/verify-email" element={<EmailVerification />} />
           <Route path="/forget-password" element={<ResetPassword />} />
         </Routes>

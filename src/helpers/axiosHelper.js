@@ -54,6 +54,7 @@ export const postUser = (data) => {
         method: "post",
         url: adminUserEP,
         data,
+        isPrivate:true,
     }
     return apiProcessor(option);
 }
@@ -133,6 +134,17 @@ export const getAdminUser = () => {
     }
     return apiProcessor(option);
 }
+
+//get all admin users
+export const getAllAdminUser = () => {
+    const option = {
+        method: "get",
+        url: adminUserEP + "/all-admin",
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
 
 //FETCH new accessToken
 export const getNewAccessJWT = async () => {

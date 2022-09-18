@@ -13,7 +13,7 @@ export const OrderEditForm = () => {
 
   useEffect(() => {
     if (orders.length) {
-      const select = orders.filter((item) => item._id === _id)
+      const select = orders.filter((item) => item._id === _id)[0];
       dispatch(setSelectedOrders(select));
     } else {
       dispatch(getSingleOrder(_id));
