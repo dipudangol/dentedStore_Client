@@ -3,7 +3,7 @@ import { Button, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import AdminLayout from '../../components/layout/AdminLayout'
-import { fetchAdminUsersAction } from '../login/userAction'
+import { deleteAdminUsersAction, fetchAdminUsersAction } from '../login/userAction'
 import { getUsers } from './customerAction'
 
 export const AdminUsers = () => {
@@ -14,6 +14,14 @@ export const AdminUsers = () => {
     }, [dispatch]);
 
     const { adminUsers, user } = useSelector((state) => state.admin);
+
+
+    const handleOnDelete = (_id) => {
+        console.log(_id, "from page");
+        if (window.confirm("Are you sure you want to delete users?")) {
+            dispatch(deleteAdminUsersAction(_id));
+        }
+    }
 
     return (
         <AdminLayout>
@@ -47,9 +55,9 @@ export const AdminUsers = () => {
                                 <td>{item?.email}</td>
                                 <td>{item?.phone}</td>
                                 <td>
-                                    <Link to ={`/order/${item?._id}`}>
-                                        <Button variant="danger" disabled={item?._id===user?._id}>Delete</Button>
-                                    </Link>
+                                    <Button variant="danger"
+                                        onClick={() => handleOnDelete(item?._id)}
+                                        disabled={item?._id === user?._id}>Delete</Button>
                                 </td>
                             </tr>
 

@@ -1,4 +1,4 @@
-import { getAdminUser, getAllAdminUser, getNewAccessJWT, loginAdminUser, updateAdminUser, updateAdminUserPassword } from "../../helpers/axiosHelper";
+import { deleteAdminUser, getAdminUser, getAllAdminUser, getNewAccessJWT, loginAdminUser, updateAdminUser, updateAdminUserPassword } from "../../helpers/axiosHelper";
 import { toast } from "react-toastify"
 import { setAdminUser, setAllAdminUser } from "./userSlice";
 
@@ -75,4 +75,14 @@ export const updateAdminPasswordAction = async (data) => {
 export const fetchAdminUsersAction = () => async (dispatch) => {
     const { status, users } = await getAllAdminUser();
     status === "success" && dispatch(setAllAdminUser(users));
+}
+
+
+// ===================delete admin users=====================
+export const deleteAdminUsersAction = (_id) => async (dispatch) => {
+    const pending = deleteAdminUser(_id);
+    toast.promise(pending, { pending: "please, wait..." })
+    const { status, message } = await pending;
+    toast[status](message);
+    status === "success" && dispatch(fetchAdminUsersAction());
 } 

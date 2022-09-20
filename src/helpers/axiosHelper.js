@@ -54,7 +54,7 @@ export const postUser = (data) => {
         method: "post",
         url: adminUserEP,
         data,
-        isPrivate:true,
+        isPrivate: true,
     }
     return apiProcessor(option);
 }
@@ -89,6 +89,16 @@ export const updateAdminUser = (data) => {
     }
     return apiProcessor(option);
 }
+//delete admin user
+export const deleteAdminUser = (_id) => {
+    const option = {
+        method: "delete",
+        url: adminUserEP + "/" + _id,
+        isPrivate: true,
+    }
+    return apiProcessor(option);
+}
+
 
 //update admin user password
 export const updateAdminUserPassword = (data) => {
