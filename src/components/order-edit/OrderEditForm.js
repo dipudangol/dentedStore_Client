@@ -56,10 +56,10 @@ export const OrderEditForm = () => {
 
 
       {/* payment info */}
-      <div className='paymentinfo card py-2  mt-4'>
+      <div className='paymentinfo card py-2 mt-4'>
         <h2>Payment Info</h2>
         <hr />
-        <p>
+        <p className='px-2'>
           Status:{selectedOrder?.paymentInfo?.status}<br />
           Total Paid: $ {selectedOrder?.paymentInfo?.paidAmount}<br />
           Paid Date: {selectedOrder?.paymentInfo?.paidDate}<br />
