@@ -35,11 +35,11 @@ const Dashboard = () => {
       PaymentStatus: "pending",
     },
     {
-      status: "active",
-      fName: "Dipu",
-      lName: "dangol",
-      OrderDate: "2020-1-4",
-      PaymentStatus: "pending",
+      status: "inactive",
+      fName: "Manish",
+      lName: "Shrestha",
+      OrderDate: "2021-2-6",
+      PaymentStatus: "Success",
     }
   ]
   const { productList } = useSelector(state => state.products);
@@ -55,6 +55,9 @@ const Dashboard = () => {
       <hr style={{
         "width": "15%",
       }} />
+
+
+<Scrollbar productList={productList} />
       {/* product summary */}
       <div className='products mt-3 py-3'>
         <h5>Product Summary</h5>
@@ -95,19 +98,7 @@ const Dashboard = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-      <Scrollbar items={productList} />
+     
       <DisplayStats />
     </AdminLayout>
   )

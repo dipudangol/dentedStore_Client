@@ -1,55 +1,28 @@
 import React from 'react'
 import { Carousel } from 'react-bootstrap'
 
-export const Scrollbar = ({ items }) => {
-    
+export const Scrollbar = ({ productList }) => {
+    console.log(productList)
+
     return (
         <div>
-            {
-                items.map((item, i) => (
-                    <div>{item.name}</div>
-                ))
-            }
+            <Carousel  className='m-5 bg-dark border'>
+                {productList.map((item,i) => (
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src={item ? "http://localhost:8000" + item.thumbnail : null}
+                            alt={item.sku}
+                            crossOrigin='anonymous' width="100%" height="300px"
+                        />
+                        <Carousel.Caption>
+                            <h3>{item.name}</h3>
+                            {/* <p>{item.description}</p> */}
+                        </Carousel.Caption>
+                    </Carousel.Item>
 
-            <Carousel className='m-5 bg-dark border'>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={items.length ? "http://localhost:8000" + items[0].thumbnail : null}
-                        alt="First slide"
-                        crossOrigin='anonymous' max-width="10px" height="300px"
-                    />
-                    <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={items.length ? "http://localhost:8000" + items[0].thumbnail : null}
-                        alt="Second slide"
-                    />
-
-                    <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="holder.js/800x400?text=Third slide&bg=20232a"
-                        alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                        </p>
-                    </Carousel.Caption>
-                </Carousel.Item>
+                )
+                )}
             </Carousel>
         </div>
     )
