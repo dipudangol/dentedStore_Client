@@ -36,7 +36,7 @@ export const ProductTable = () => {
                             <td>{item.name}</td>
                             <td>{item.qty}</td>
                             <td>{item.price}</td>
-                            <td>{item.salesPrice}</td>
+                            <td>{item.salesPrice}</td>      
                             <td>{item.salesStartDate && item.salesStartDate.substr(0, 10)} to {item.salesEndDate && item.salesEndDate.substr(0, 10)}</td>
                             <td>
                                 <Link to={`/product/edit/${item._id}`}>

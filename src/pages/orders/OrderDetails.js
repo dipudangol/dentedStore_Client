@@ -9,7 +9,7 @@ const OrderDetails = () => {
         <div>
             <AdminLayout>
                 <div className='mt-3'>
-                    <Link to="/orders" className='text-decotaion-none text-secondary '>&lt; Back</Link>
+                    <Link to="/orders" className='text-decoration-none text-secondary '>&lt; Back</Link>
                 </div>
                 <h1 className='py-3'>
                     Order Details

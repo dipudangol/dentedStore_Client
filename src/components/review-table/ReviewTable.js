@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom';
 import { getReviews } from '../../pages/reviews/reviewAction';
 
 
@@ -39,11 +40,11 @@ export const ReviewTable = () => {
                                 <td>{item?.review}</td>
                                 <td>
                                     <a href="">info</a></td>
-                                {/* <td>
+                                <td>
                                     <Link to ={`/order/${item?._id}`}>
                                         <Button variant="info">View Order</Button>
                                     </Link>
-                                </td> */}
+                                </td>
                             </tr>
 
                         ))

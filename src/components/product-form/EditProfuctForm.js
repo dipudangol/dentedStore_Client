@@ -87,14 +87,14 @@ export const EditProductForm = () => {
 
       name: 'salesStartDate',
       value: form.salesStartDate,
-      label: "Sales start dte",
+      label: "Sales start Date",
       type: "Date",
     },
     {
 
       name: 'salesEndDate',
       value: form.salesEndDate,
-      label: "Sales End dte",
+      label: "Sales End Date",
       type: "Date",
     },
     {
@@ -184,7 +184,7 @@ export const EditProductForm = () => {
             <option value="">Select Category</option>
             {
               categories.length > 0 && categories.map((item) =>
-                !item.parentId && <option
+                item.parentId && <option
                   key={item._id} value={item._id}
                   selected={item._id === form.catId}
                 >{item.name}</option>)

@@ -72,7 +72,7 @@ const Dashboard = () => {
           </Col>
 
           <Col md="4">
-            <CustomCard count={productList.length - activeProduct.length} title="Bought at there" />
+            <CustomCard count={productList.length - activeProduct.length} title="Recently purchased" />
           </Col>
 
         </Row>

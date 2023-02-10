@@ -42,8 +42,8 @@ const EmailVerification = () => {
                     </Card>
                 )}
                 {
-                    response.message &&(
-                    <Alert className="m-auto mt-10" variant={response.status === "success" ? "success" : "danger"}>{response.message}</Alert>
+                    response.message && (
+                        <Alert className="m-auto mt-10" variant={response.status === "success" ? "success" : "danger"}>{response.message}</Alert>
                     )}
 
 

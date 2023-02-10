@@ -163,7 +163,7 @@ export const AddProductForm = () => {
           <Form.Select name="catId" onChange={handleOnchange} required>
             <option value="">Select Category</option>
             {
-              categories.length > 0 && categories.map((item) => !item.parentId && <option key={item._id} value={item._id}>{item.name}</option>)
+              categories.length > 0 && categories.map((item) => item.parentId && <option key={item._id} value={item._id}>{item.name}</option>)
             }
           </Form.Select>
         </Form.Group>

@@ -94,11 +94,14 @@ function App() {
               <AdminUsers />
             </PrivateRouter>} />
 
+          <Route path="/Register" element={
+            <PrivateRouter>
+              <AdminRegistration />
+            </PrivateRouter>} />
 
 
           {/* public routes */}
           <Route path="/" element={<LoginPage />} />
-          <Route path="/Register" element={<PrivateRouter> <AdminRegistration /> </PrivateRouter>} />
           <Route path="/admin/verify-email" element={<EmailVerification />} />
           <Route path="/forget-password" element={<ResetPassword />} />
         </Routes>
